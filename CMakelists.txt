@@ -1,0 +1,100 @@
+
+include(.doc/ycmake/linkcommon.cmake)
+include(.doc/ycmake/software.cmake)
+
+cmake_minimum_required(VERSION 3.14)
+ 
+include_directories (
+
+ "$ENV{clib}/umlib/include"
+   
+ "$ENV{clib}/comlib/include"
+ 
+ 
+ 
+ "$ENV{clib}/sigmaster/include"
+ 
+ "$ENV{clib}/guimaster/include"
+ 
+ "$ENV{clib}/gaia"
+
+ "$ENV{clib}/netcorp/include"
+
+)
+
+
+set(projname "gaia-tool")
+project(${projname} CXX)
+message("Build type: ${CMAKE_BUILD_TYPE}")
+#
+  set(BUILD_DLL 0)  
+  set(BUILD_LIB 0)  
+  set(console 0)  
+#
+#
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-writable-strings -O0 -Wdangling-else	-std=c++20 -dD -m64 ")
+
+set(CMAKE_CXX_FLAGS_RELEASE "-O2 -DNDEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrt 	-std=c++20 -std=gnu++17")
+
+
+
+   set(CMAKE_GENERATE_PDB_FILE ON)
+   set(PDB_OUTPUT_DIRECTORY "DEBUG")
+
+   set(CMAKE_GENERATE_PDB_FILE on)
+   SET(CMAKE_COLOR_MAKEFILE ON)
+   SET(CMAKE_VERBOSE_MAKEFILE ON)
+   ADD_DEFINITIONS(-DUNICODE)
+   ADD_DEFINITIONS(-D_UNICODE)
+   message("${CMAKE_BUILD_TYPE}")
+
+   message("build mode : ${MODE}")
+  
+ 
+   add_library(curl_rel STATIC IMPORTED) # or STATIC instead of SHARED
+   add_library(NetCorp STATIC IMPORTED) # or STATIC instead of SHARED
+ 
+
+ 
+   set_target_properties(curl_rel PROPERTIES
+   IMPORTED_LOCATION "$ENV{clib}/netcorp/include/libs_used/zdep.lib" )
+  #
+
+   #                              static libs
+    set_target_properties(NetCorp PROPERTIES IMPORTED_LOCATION "$ENV{clib}/netcorp/build/${CMAKE_BUILD_TYPE}/NetCorp.lib" )
+   
+   #
+
+  sw_objs_bundle( bundle ".gaia-buildtools/scriptServer.cpp" )
+  add_subdirectory(UT )
+  add_subdirectory( Siphon )
+  build_target(${projname} SOURCES ${bundle}  )
+ 
+ 
+  
+  target_link_libraries(${projname}   NetCorp curl_rel   )
+  target_compile_definitions(${projname} PRIVATE  BUILD_DLL )
+ target_precompile_headers(${projname} PRIVATE .gaia-buildtools/compile_defs.h)
+  target_compile_features(${projname} PRIVATE cxx_std_17)
+  link_common_libraries(${projname})
+
+
+
+
+
+
+#########################
+
+
+
+
+
+
+
+
+
+
+
+
+
+
