@@ -14,9 +14,10 @@
        said modules range from kernel, usermode, graphics and machine code scanners and a Reversing tool, most of 
        the underlying source code of what GAIA uses is unavailable ( OBVIOUSLY ), but I'll try and open source more of its dependencies.
 
-       NOTE: I do not condone hacking games and I'm nuking much of my source as I'm stepping away from the game hacking scene, I never enjoyed doing it and neither do I sell cheats.
+       NOTE: I do not condone hacking games and I'm nuking much of my source as I'm stepping away from the game hacking scene, 
+	   I never enjoyed doing it, i did it only for learning computer science in a fun way and becoming a better programmer.
        
-       Difference between the private version of GAIA and this old build are LUA integration and the reversal Siphon tools.
+       This Public version lacks LUA integration and various tools and the development of Siphon reversing tool.
   
        To see the source of a project using this framework see .docs/example-cs2.cpp 
  
