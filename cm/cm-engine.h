@@ -64,7 +64,7 @@ class cma::CMEngine {
    Status status;
 
    // requests CME to enter stage clean up-
-   // and get the swear-word outta here
+   // and get the fuck outta here
    auto AskTermination () {
       status.set(estatus::cleanup);
    }
@@ -107,16 +107,15 @@ class CMEWorker {
    singleton_member auto AutoHostAppCall = [] () {
       if (worker.target_supplied) {
          // confirm is .exe otherwise we return;
-         //
          astr Name(worker.Application_Target.decrypt());
          if (Name.pos(-4) != '.') {
             worker.target_supplied = false;
             return true;
          }
-
-         astr try_proc = worker.Application_Target.decrypt();
+        
+         astr try_proc = worker.Application_Target.decrypt(); 
          // call targetApplication
-         cm.rat.SetProcessModule(try_proc);
+         cm.rat.SetProcessModule( try_proc);
          // recrypt AYYLmao
          worker.Application_Target.RECRYPT();
          return true;
@@ -158,18 +157,19 @@ isol_CMRoute_Procedure (auto &CMRoute) {
    } catch (astr &e) {
 
       cmverbose(e, "[ CME ] CM::fn general Exceptions Caught");
-      return;
+        return;
 
    } catch (exceptions::Entity &e) {
       cmverbose(e.Get(), "[ CME : ENTITYEXCEPTION ]");
-      return;
-   } catch (RatExceptions &e) {
-      cmverbose(e.GetAny(), "[ CME : ] FW-RT EXCEPTION ]");
+        return;
+   } 
+   catch (RatExceptions &e) {
+      cmverbose(e.GetAny(),  "[ CME : ] FW-RT EXCEPTION ]");
+      
+       return;
+  }
 
-      return;
-   }
-
-   cma::fn::BaseRoute_PostRan = true;
+    cma::fn::BaseRoute_PostRan = true;
 
    return;
 }
@@ -180,18 +180,21 @@ namespace {
       try {
          // this one is handled by this function
          CMEWorker::AutoHostAppCall();   // fed from macro
-
+         
+        
 
       } catch (RatExceptions &e) {
-         e.Get();
+        e.Get();
          return;
-      } catch (RatExceptions e) {
-         e.Get();
+      }
+      catch (RatExceptions e) {
+        e.Get();
          return;
       }
 
+      
 
-      isol_CMRoute_Procedure(CM_1337_ROUTE);
+      isol_CMRoute_Procedure( CM_1337_ROUTE);
    }
 
 }   // namespace
@@ -213,8 +216,8 @@ CM_IMPL bool NAME_REDACTEDThread_Main () {
       }
       default: {
          // clean up we exit this thread here.
-
-
+         
+     
          cme.status.set(estatus::cleanup);
       }
    }
@@ -247,28 +250,28 @@ CM_IMPL void cma::appEntry() {
    while (cm.gui.getSessionInfo()->Session) {
 
       try {
-         // NAME_REDACTED thread is started .
-         if (cme.status.check(estatus::pre_emptive)) {
+      // NAME_REDACTED thread is started .
+      if (cme.status.check(estatus::pre_emptive)) {
 
-            cme.status.set(estatus::await_nextloads);
+         cme.status.set(estatus::await_nextloads);
 
-            lib::threadmaster().setup.newEternal(NAME_REDACTEDThread_Main, "x-2934f");
-            lib::threadmaster().GlobalSleep("1ms");
-         }
-         else if (cme.status.check(estatus::cleanup)) {
+         lib::threadmaster().setup.newEternal(NAME_REDACTEDThread_Main, "x-2934f");
+         lib::threadmaster().GlobalSleep("1ms");
+      }
+      else if (cme.status.check(estatus::cleanup)) {
 
-            break;
-         }
+         break;
+      }
+      
+      cm.gui.run("all");
 
-         cm.gui.run("all");
+      if (cm.gui.pressed("X")) {
+         cme.status.set(estatus::cleanup);
+      }
 
-         if (cm.gui.pressed("X")) {
-            cme.status.set(estatus::cleanup);
-         }
-
-         sleep_for(10ms);
-      } catch (astr &e) {
-         e.print("exce caught t1-gaia");
+      sleep_for(10ms);
+      } catch(astr & e){
+            e.print("exce caught t1-gaia");
       }
    }
 

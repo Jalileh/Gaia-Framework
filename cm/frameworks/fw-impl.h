@@ -6,7 +6,7 @@
 #include "../cm-metadata.h"
 
 #include "../include/fnTemps.h"
-
+ 
 
 //////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
@@ -259,7 +259,7 @@ class cma::systems::Rat {
       }
       else {
 
-         // confirm the swear-wording module hasnt been unloaded before returning it
+         // confirm the fucking module hasnt been unloaded before returning it
          u64 submodule_value = CachedSubModule->ModuleBase;
 
          char PESymbol = 'M',
@@ -310,14 +310,15 @@ class cma::systems::Rat {
    }
 
    // cleaner code to navigate data structures and pull address values off pointers
-
+ 
    template < typename ret >
    ret readPointer (const u64 &Pointer, int math, cmMarkID id) {
       auto to_read = Pointer + math;
       return read< ret >(to_read, sizeof(ret), id);
    }
-
-
+   
+ 
+ 
    template < typename T, typename... Args >
    bool readPointers (T &OUT Store_result_info, u64 ref_Pointer, int On_Pointer_math, cmMarkID id, Args &&...args) {
 
@@ -407,8 +408,10 @@ class cma::systems::Rat {
               markTeller2 = acstr("\n HINT [?] last good Mark was ... "),
               markTeller3 = astrc(" and Address was ... ");
 
-
-         return alertform.append_v(markTeller.append(failedMark), markTeller2.append(GoodMarkId), markTeller3.append(GoodAddrMark));
+    
+         return alertform.append_v(markTeller.append(failedMark),
+         markTeller2.append(GoodMarkId), 
+         markTeller3.append(GoodAddrMark));
       }
 
     public:
@@ -836,9 +839,11 @@ class cma::systems::Sig : private sigLang {
    }
 
  public:
+   
+
    auto findObject (astr id, aint opt_read_into_offset = 0xdeadbeef) {
       auto object_siglang = findCaches(id, sigLang_Object::object);
-
+ 
 
       u64 instruction = object_siglang->results.GetInstructionAddress();
 
@@ -849,13 +854,13 @@ class cma::systems::Sig : private sigLang {
 
       u64 objectRead = null;
 
-
+      
       {
          u64 instAddress = instruction;
          u32 instrel = 0;
 
          fsl.readMemory(instAddress + object_siglang->signature.DynamicPosition, sizeof(instrel), &instrel);
-
+ 
 
          u16 is_using_farInstructAsSig_modifier = (object_siglang->signature.DynamicPosition - 3);
 
@@ -934,10 +939,14 @@ class cma::systems::Sig : private sigLang {
    }
 
 
+  
+
    noret addObject (nodem< sigLangSTR > bundle, astr subModule = "main") {
       API_siglang_interpretData(bundle, subModule, sigLang_Object::object, ref_ sig_cache);
    }
 
+
+  
 
    noret addOffset (nodem< astr > bundle, astr subModule = "main") {
       API_siglang_interpretData(bundle, subModule, sigLang_Object::offset, ref_ sig_cache);
@@ -987,7 +996,7 @@ class cma::systems::Sig : private sigLang {
       sigData = sig_cache.getbyID_s(input_id, ref_ sigLang_Object::id);
 
       if (sigData->type != expecting_type) {
-         cle_private(astr("cache-invalidation you stupid swear-word => ").append(sigData->id), " [CM] cache-invalidation  object/offset api's have been mixed!!!");
+         cle_private(astr("cache-invalidation you stupid fuck => ").append(sigData->id), " [CM] cache-invalidation  object/offset api's have been mixed!!!");
       }
 
       if (isGoodSigCacheData(sigData)) {
@@ -1007,6 +1016,9 @@ class cma::systems::Sig : private sigLang {
 
       return sigData;
    }
+
+
+    
 };
 
 

@@ -50,11 +50,11 @@ class t_aimEntity {
 
 
  public:
-   t_aimEntity(Entity< T, TADDR > &base_entity, Bones T::*bones, vec3 T::*viewAnglesVector, vec3 T::*headPos)
+   t_aimEntity (Entity< T, TADDR > &base_entity, Bones T::*bones, vec3 T::*viewAnglesVector, vec3 T::*headPos)
       : managed_entity(&base_entity), bones(&(base_entity.*bones)),
         viewAngles(&(base_entity.*viewAnglesVector)), headpos(&(base_entity.*headPos)) {}
 
-   t_aimEntity() : managed_entity(null) {};
+   t_aimEntity () : managed_entity(null) {};
 
  public:
    auto ViewAngles () {
@@ -129,7 +129,7 @@ class CrossHairFov {
          return modifier.x + BaseRadius;
       }
 
-      FovData() noexcept {}
+      FovData () noexcept {}
    };
 
    const FovData &GetFovData () {
@@ -192,7 +192,7 @@ class cmapi::Aimware : public CrossHairFov, public UIAimwareConfig {
 
 
  public:
-   Aimware(CMEntity &Client, CMEntity &Player, Bones T::*bones, vec3 T::*HEADPOS, vec3 T::*viewAnglesVec3, u64 TADDR::*ViewAngles, ViewMatrix &viewMatrix) : m_viewMatrix(viewMatrix) {
+   Aimware (CMEntity &Client, CMEntity &Player, Bones T::*bones, vec3 T::*HEADPOS, vec3 T::*viewAnglesVec3, u64 TADDR::*ViewAngles, ViewMatrix &viewMatrix) : m_viewMatrix(viewMatrix) {
 
       m_player = aimEntity(Player, bones, viewAnglesVec3, HEADPOS);
 
@@ -379,7 +379,7 @@ class cmapi::Aimware : public CrossHairFov, public UIAimwareConfig {
    // and robust fovbased aim system
    bool On_aiming_fov_player (aimEntity &Player) {
 
-      // // no team-mate aims swear-word
+      // // no team-mate aims [CENSORED]
       // if (isClientTeammate(Player))
       //    return false;
 
@@ -390,7 +390,7 @@ class cmapi::Aimware : public CrossHairFov, public UIAimwareConfig {
       m_scalar.SetScaleFactor(Factor);
 
       if (IS_LAST_BESTPLAYER(Player)) {
-         // check if we still swear-wording inside it
+         // check if we still fucking inside it
          auto bIsInsideFov = GOOD_PLAYER_IN_FOV(Player);
          if (Player.EObject().hp == 0) {
             sleeper().delay("100ms");

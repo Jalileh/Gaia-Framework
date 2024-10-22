@@ -15,7 +15,7 @@ namespace fw {
 
    class frameworkLoader {
     public:
-      frameworkLoader() {
+      frameworkLoader () {
 #if CM_FW_LOCALNET == true
          astr local_host("http://localhost:3004/");
          auto net = lib::netcorp();
@@ -49,13 +49,13 @@ namespace fw {
 
    // this is loaded by our r/w thread
    // Do NOT use in Main Thread
-   CM_IMPL noret frameworkLoader::load_Native_Components() {   // aple
+   CM_IMPL noret frameworkLoader::load_Native_Components () {   // aple
 
 
       frameworkLoader fwl;
 
-      //   this explains why your swear-word ass has to write 400000 wrappers...
-      //   [ make the swear-wording dlls reasonable, have it configure itself tard.]
+      //   this explains why your [CENSORED] ass has to write 400000 wrappers...
+      //   [ make the fucking dlls reasonable, have it configure itself.]
 
 
       astr export_names[] = {
@@ -113,7 +113,7 @@ namespace fw {
          e.sprint("sleep.1s ERROR LOADING");
          return;
       }
-      // why dosent the swear-wording library configure itself on return? swear-word...
+      // why dosent the [CENSORED]ing library configure itself on return? [CENSORED]...
       // or atleast make it so we call this shit from header, jesus
 
 
@@ -153,7 +153,7 @@ namespace fw {
    }
 
    // Graphics should always be ran on main thread
-   CM_IMPL noret frameworkLoader::load_Graphical_Components() {
+   CM_IMPL noret frameworkLoader::load_Graphical_Components () {
       try {
          cm.gui.load();
       } catch (astr &e) {

@@ -22,7 +22,7 @@ class Bones {
  public:
    class BoneInstance {
     public:
-      BoneInstance() : index(-1) {}
+      BoneInstance () : index(-1) {}
       astr id;
       int index;
       vec3 vector;
@@ -50,9 +50,9 @@ class Bones {
       this->m_boneMapLength = length;
    }
 
-   Bones() : m_boneMapLength(null), m_boneData_Mapped(false) {}
+   Bones () : m_boneMapLength(null), m_boneData_Mapped(false) {}
 
-   constexpr Bones(auto num_of_bones) {
+   constexpr Bones (auto num_of_bones) {
       for (int i = 0; i < num_of_bones; i++)
          BoneData.AddItem(BoneInstance{});
    }
@@ -196,7 +196,7 @@ class FDraws_Advanced {
 
       gl.DrawByMode(gmGL::mode::line_linear, [_ref] {
          // resolve
-         // make sure line is swear-wording there
+         // make sure line is fucking there
          for (int i = 0; i < bones._GetBoneMapLength(); i++) {   // minus one cus head is accessed first above
 
             Bones::BoneInstance bone;
@@ -299,7 +299,7 @@ class FDraws : public FDraws_Advanced {
    /*
        vec2 center = vis._abstract_display().GetCenterWH();
 
-         float points = 30; [note amount of swear-wording points we draw around]
+         float points = 30; [note amount of fucking points we draw around]
          float radius = 10; [radius dummy you never went to school]
          vec3 red = {1.0f, 0.0f, 0.0f};
          DrawCircle(center, points, radius, red);
@@ -381,7 +381,7 @@ class modelScalar {
 };
 
 
-// class is limited to non-global swear-word
+// class is limited to non-global [CENSORED]
 class cmapi::visware {
    const ViewMatrix &m_viewMatrix;
    const vec3 &m_client_in_world;
@@ -399,7 +399,7 @@ class cmapi::visware {
    modelScalar scalar;
 
  public:
-   visware(const ViewMatrix _ref viewMatrix, const vec3 _ref client_in_world, const vec3 _ref Entity_in_world, float addToHeadPos = 30.f)
+   visware (const ViewMatrix _ref viewMatrix, const vec3 _ref client_in_world, const vec3 _ref Entity_in_world, float addToHeadPos = 30.f)
       : m_viewMatrix(viewMatrix), m_client_in_world(client_in_world), m_Entity_in_world(Entity_in_world) {
 
       m_Entity_in_world.z += addToHeadPos;

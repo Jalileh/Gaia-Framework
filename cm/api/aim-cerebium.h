@@ -56,7 +56,7 @@ class CAngles {
    float pitch, yaw, roll;
 
  public:
-   CAngles() : pitch(unset), yaw(unset), roll(unset) {}
+   CAngles () : pitch(unset), yaw(unset), roll(unset) {}
 
    operator vec3() {
       return {pitch, yaw, roll};
@@ -69,7 +69,7 @@ class CAngles {
       return *this;
    }
 
-   CAngles(const vec3 _ref v_angles) {
+   CAngles (const vec3 _ref v_angles) {
       pitch = v_angles.x;
       yaw = v_angles.y;
       roll = v_angles.z;
@@ -81,6 +81,8 @@ class CAngles {
 ////
 ////  @s.Aim Resolver : Gaia Source 1.0
 ////
+////  this gem of codebase should in theory generate us aim angles.
+////  and ontop of that provide us with utility to determine the most reasonable
 class aimCerebium::AimResolver {
  public:
    // some games check angles, you might want to be wary if you are making stealthy feature
@@ -93,7 +95,7 @@ class aimCerebium::AimResolver {
 
 
  public:
-   // This Code is certified and robust - let it age swear-word [LET IT swear-wordING AGE]
+   // This Code is certified and robust - let it age [CENSORED] [LET IT [CENSORED]ING AGE]
    //
    // [UNWANTED RESULTS WARNNING ]  THIS IS ONLY FOR BODY ORIGIN CALCULATIONS
    // YOU MUST GO ON TO CALL OTHER FUNCTIONS FOR BONE RESOLVER
@@ -130,6 +132,11 @@ class aimCerebium::AimResolver {
 
 
          pitch = (atan2(-forward[2], tmp) * 180 / M_PI);
+
+         /*  why did the [CENSORED] put this here ?
+            if (pitch < 0)
+             wtf ? pitch += 360;
+         */
       }
 
       angles[0] = pitch;

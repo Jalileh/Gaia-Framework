@@ -74,7 +74,7 @@ namespace cma {
       friend class EInstances;
 
     public:
-      Entity(T, T_Addrs) : T(unsets), AddressPages{unsets}, intel(unsets), teamid(teamNum_unused), team_b(unset) {}
+      Entity (T, T_Addrs) : T(unsets), AddressPages{unsets}, intel(unsets), teamid(teamNum_unused), team_b(unset) {}
 
 
       auto &m_GetAddress () {
@@ -155,7 +155,7 @@ namespace __cm_entity_sub {
     public:
       T extended;
 
-      EBaseInfo() : player_count(unset), entryAddress(unset) {}
+      EBaseInfo () : player_count(unset), entryAddress(unset) {}
    };
 
 
@@ -189,7 +189,7 @@ namespace __cm_entity_sub {
       }
 
 
-      EWalker() : has_custom_inc(false), custom_int_inc(8) {};
+      EWalker () : has_custom_inc(false), custom_int_inc(8) {};
    };
 
 
@@ -231,9 +231,9 @@ class IsoEntitiesRWExceptHandler {
    };
    Flags flags;
 
-   IsoEntitiesRWExceptHandler() : flags(unsets), bResourceStateSaving((false)) {
+   IsoEntitiesRWExceptHandler () : flags(unsets), bResourceStateSaving((false)) {
 
-                                  };
+                                   };
 
 
    // algorithm for us to know when game is in play and save resources
@@ -277,7 +277,7 @@ class cma::EInstances {
    template < typename attachments >
    class attachedInstanceData {
     public:
-      attachedInstanceData() {
+      attachedInstanceData () {
          if (misc::type_is< attachments, __nomd >::result == true) {
             hasAttachments = false;
          }
@@ -296,7 +296,7 @@ class cma::EInstances {
       template < typename T_hashed_attach >
       class holder {
        public:
-         holder() : hash_id(null), pEntity(null) {}
+         holder () : hash_id(null), pEntity(null) {}
          uint hash_id;
          pvoid pEntity;
          T_hashed_attach data;
@@ -374,13 +374,13 @@ class cma::EInstances {
 template < typename T, typename t_info, typename T_Addrs, typename Attached_t >
 class cma::Entitylist : private cma::EInstances< T, t_info, T_Addrs, Attached_t > {
  public:
-   Entitylist(T EntityData) {};
+   Entitylist (T EntityData) {};
 
-   Entitylist(T EntityData, t_info Metadata) {
+   Entitylist (T EntityData, t_info Metadata) {
       memset(&metadata.extended, null, sizeof(metadata.extended));
    };
 
-   Entitylist(T EntityData, t_info Metadata, T_Addrs i_Addr) {
+   Entitylist (T EntityData, t_info Metadata, T_Addrs i_Addr) {
       memset(&metadata.extended, null, sizeof(metadata.extended));
    };
 
@@ -437,9 +437,9 @@ class cma::Entitylist : private cma::EInstances< T, t_info, T_Addrs, Attached_t 
       };
       Flags flags;
 
-      Configurative_Algorithm() : flags(unsets), bResourceStateSaving((false)) {
+      Configurative_Algorithm () : flags(unsets), bResourceStateSaving((false)) {
 
-                                  };
+                                   };
 
 
       // algorithm for us to know when game is in play and save resources
@@ -564,7 +564,7 @@ class cma::Entitylist : private cma::EInstances< T, t_info, T_Addrs, Attached_t 
    // localplayer data is always superior to its clone unless we have data in it we dont want to re-read
    auto &Client () {
       if (!MarkedClient) {
-         auto unset_markClient_error = acstr("swear-word YOU HAVENT CALLED MARKASCLI");
+         auto unset_markClient_error = acstr("[CENSORED] YOU HAVENT CALLED MARKASCLI");
          throw unset_markClient_error;
       }
       else {

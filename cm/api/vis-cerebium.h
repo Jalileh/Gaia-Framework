@@ -211,7 +211,7 @@ class visCerebium::World {
       return viewMatrix;
    }
 
-   // WARNING THIS CODE NEEDS swear-wordING THE CAMERA NOT AN ORIGIN VEC3 OF LOCALPLAYER!!!!
+   // WARNING THIS CODE NEEDS FUCKING THE CAMERA NOT AN ORIGIN VEC3 OF LOCALPLAYER!!!!
    // ORIGIN IS THE LOCATION OF THE PLATE UNDER A MODEL
    vec2 world_to_screen_algorithm (vec3 &LocalCameraPositions, vec3 &Eye_angles, float &FovAngle, vec3 &WorldEntity) {
       vec2 Screenlocation;   // return
