@@ -9,13 +9,12 @@
 [Compile Modes](.doc/binary-config/compile_modes.md)
  <h1>About</h1> 
  
-	   This is one of my old versions of GAIA framework for hacking games,
-       I thought I'd open source it rather than just delete it. 
-       The only difference between the private one is LUA integration. 
-       I hated hacking games but writing stuff like these was the only joy in it for me. 
+       GAIA is a high level framework for experimental 3rd party software development ( hacking ).
+       It is responsible for handling several low level .dll modules in order to speed up linear implementation of software ,
+       said modules range from kernel, usermode, graphics and machine code scanners. Furthemore
+       
   
-       To see the source of a project using this framework see .docs/example-cs2.cpp
-
+       To see the source of a project using this framework see .docs/example-cs2.cpp 
  
 
 <h1>cm-metadata::EntityList usage Example </h1> 
